@@ -2,10 +2,24 @@
 
 import { useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { Music, Pause, Play } from 'lucide-react';
 
 export default function ApologyPage() {
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const mainContentRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const toggleMusic = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (isMusicPlaying) {
+      audio.pause();
+    } else {
+      audio.play().catch(() => {});
+    }
+    // State updates from onPlay/onPause so it stays correct if play fails
+  };
 
   const handleReadClick = () => {
     mainContentRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -14,6 +28,25 @@ export default function ApologyPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-100 via-pink-50 to-blue-50">
+      {/* Background music - add daylight.mp3 to /public */}
+      <audio
+        ref={audioRef}
+        loop
+        src="/Let-her-go.mp3"
+        onPlay={() => setIsMusicPlaying(true)}
+        onPause={() => setIsMusicPlaying(false)}
+      />
+      {/* Floating music toggle */}
+      <button
+        type="button"
+        onClick={toggleMusic}
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        aria-label={isMusicPlaying ? 'Pause music' : 'Play music'}
+        title={isMusicPlaying ? 'Pause Daylight' : 'Play Daylight – Taylor Swift'}
+      >
+        {isMusicPlaying ? <Pause className="h-6 w-6" /> : <Music className="h-6 w-6" />}
+      </button>
+
       {/* Hero Section */}
       <section className="flex items-center justify-center min-h-screen px-4 py-12">
         <div className="text-center fade-in">

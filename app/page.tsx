@@ -65,7 +65,7 @@ export default function ApologyPage() {
                 I was so caught up planning a future with you that I forgot to protect the beautiful present we had. I missed so many moments with you that I should have cherished. That's my biggest regret.
               </p>
               <p className="text-lg leading-relaxed text-foreground font-light">
-                These past months without you have been the hardest of my life. I've been reflecting every single day, and I want you to know I'm doing real work on myself—not just saying it, actually doing it.
+                These past Hours without you have been the hardest of my life. I've been reflecting every single minute, and I want you to know I'm doing real work on myself—not just saying it, actually doing it.
               </p>
               <p className="text-lg leading-relaxed text-foreground font-light">
                 Three years with you, Chaya, weren't just time. They were my life. Every laugh we shared, every adventure, even our fights—they all meant the world to me because they were us. You mean so much more to me than I ever showed you.
